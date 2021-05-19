@@ -18,27 +18,8 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-resources:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'reg-dev-ranz-devtier1 (SPN)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az group list'
-
-  - task: Packer@1
-  inputs:
-    connectedServiceType: 'azure'
-    azureSubscription: 'reg-dev-ranz-devtier1 (SPN)'
-    command: 'build'
-
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-
-- task: Ansible@0
-  inputs:
-    ansibleInterface: 'agentMachine'
-    inventoriesAgentMachine: 'noInventory'
-
