@@ -20,6 +20,7 @@ steps:
 
 - task: AzureCLI@2
   inputs:
+    azureSubscription: 'reg-dev-ranz-devtier1 (SPN)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az group list'
